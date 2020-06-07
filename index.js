@@ -25,9 +25,9 @@ function produceTipCalculator(tipPercent) {
 }
 
 function createDriver() {
-  
+ 
   return class Driver {
-    driverId: 0;
+    
     constructor(name) {
     this.name = name;
     

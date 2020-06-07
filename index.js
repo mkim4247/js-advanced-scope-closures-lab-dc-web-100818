@@ -1,28 +1,36 @@
-function produceDrivingRange(range) {
-  return function(start, end) {
-    let blocks = Math.abs(parseInt(start) - parseInt(end))
-    if (blocks > range) {
-      return `${blocks - range} blocks out of range`
+//this function returns another function that will use the range argument within a conditional statement
+//the return function will have a start and end arguments
+//if end - start < range, return range - (end - start) 
+//else end - start > range, return (end - start) - range
+function produceDrivingRange (blockRange) {
+  return function (first, last) {
+    const start = parseInt(first, 10);
+    const end = parseInt(last, 10);
+    if (end - start < blockRange) {
+      return `within range by ${blockRange - (end - start)}`;
+    } else {
+      return `${(end - start) - blockRange} blocks out of range`;
     }
-    else if (blocks < range) {
-      return `within range by ${range - blocks}`
-    }
-  }
+  };
 }
 
-function produceTipCalculator(percent){
-  return function(value) {
-    return value * percent
-  }
+//create a function that takes a floating point argument that returns a function. The arguement will determine the tip percent
+//returned function takes the final price as an argument
+//create const tip
+//return tip = finalPrice * tipPercent
+function produceTipCalculator(tipPercent) {
+  return function (finalPrice) {
+    return finalPrice * tipPercent;
+  };
 }
 
+function createDriver() {
 
-function createDriver(){
-  let DriverId = 0;
-  return class {
+  return class Driver {
     constructor(name) {
-      this.name = name;
-      this.id = ++DriverId
+    this.name = name;
+    
+      
     }
-  }
+  };
 }
